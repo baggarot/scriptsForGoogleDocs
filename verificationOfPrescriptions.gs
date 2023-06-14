@@ -1,5 +1,5 @@
 function creareTimeDrivenTriggers() {
-  ScriptApp.newTriggers('emailSend')
+  ScriptApp.newTrigger('emailSend')
     .timeBased
     .everyDays(1)
     .atHour(8)

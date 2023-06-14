@@ -17,7 +17,7 @@ function emailSend() {
       if (typeof searchCell(sheets[i], row) !== 'undefined' &&
           chekingValues(sheets[i]) == date.getMonth() - 1) {
         MailApp.sendEmail(recipient[i], "Оповещение о проверке",
-                          "У Вас в прошлом месяце на объекте " + searchCell(sheets[i], row) +
+                          "У Вас в прошлом месяце на объекте: " + searchCell(sheets[i], row) +
                           " была запланирована выездная проверка по утвержденной программе проверок!");
       }
     }

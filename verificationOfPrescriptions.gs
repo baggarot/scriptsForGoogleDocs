@@ -33,7 +33,7 @@ function alertTheme(row) {
   var address = sheet.getRange(`C${row}`).getValue();
   var organization = sheet.getRange(`D${row}`).getValue();
   Logger.log(objectName);
-  return objectName + ", расположенный в " + address + ", организацией " + organization;
+  return objectName + ", расположенному в " + address + ", организацией " + organization;
 }
 
 function reminder(counter) {

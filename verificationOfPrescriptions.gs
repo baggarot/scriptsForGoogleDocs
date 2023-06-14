@@ -30,10 +30,10 @@ function inspectorsName(row) {
 
 function alertTheme(row) {
   var objectName = sheet.getRange(`B${row}`).getValue();
-  var address = " " + sheet.getRange(`C${row}`).getValue();
-  var organization = " организация " + sheet.getRange(`D${row}`).getValue();
+  var address = sheet.getRange(`C${row}`).getValue();
+  var organization = sheet.getRange(`D${row}`).getValue();
   Logger.log(objectName);
-  return [objectName, address, organization];
+  return objectName + ", расположенный в " + address + ", организацией " + organization;
 }
 
 function reminder(counter) {

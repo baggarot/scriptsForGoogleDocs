@@ -1,6 +1,6 @@
 function creareTimeDrivenTriggers() {
   ScriptApp.newTrigger('emailSend')
-    .timeBased
+    .timeBased()
     .everyDays(1)
     .atHour(8)
     .create();

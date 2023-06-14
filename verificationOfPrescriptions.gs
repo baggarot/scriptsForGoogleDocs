@@ -1,9 +1,15 @@
 function creareTimeDrivenTriggers() {
-  ScriptApp.newTrigger('emailSend')
-    .timeBased()
-    .everyDays(1)
-    .atHour(8)
-    .create();
+  var date = new Date();
+  var day = date.getDay();
+  var days = [ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY,
+              ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY];
+  if (day !== 6 || day !== 0) {
+    ScriptApp.newTrigger('emailSend')
+      .timeBased()
+      .onWeekDay(days[day])
+      .atHour(8)
+      .create();
+  }
 }
 
 var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Предписания');

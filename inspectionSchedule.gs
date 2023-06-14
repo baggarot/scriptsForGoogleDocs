@@ -17,8 +17,8 @@ function emailSend() {
       if (typeof searchCell(sheets[i], row) !== 'undefined' &&
           chekingValues(sheets[i]) == date.getMonth() - 1) {
         MailApp.sendEmail(recipient[i], "Оповещение о проверке",
-                          "У Вас в прошлом месяце на объекте \"" + searchCell(sheets[i], row) +
-                          "\" была запланирована выездная проверка по утвержденной программе проверок!");
+                          "У Вас в прошлом месяце на объекте " + searchCell(sheets[i], row) +
+                          " была запланирована выездная проверка по утвержденной программе проверок!");
       }
     }
   }
@@ -40,7 +40,7 @@ function searchCell(nameSheet, row) {
     var objectName = sheet.getRange(`B${row}`).getValue();
     var address = sheet.getRange(`C${row}`).getValue();
     Logger.log(objectName);
-    return [objectName, address];
+    return objectName + ", расположенном в " + address;
   }
 }
 

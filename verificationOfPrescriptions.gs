@@ -1,27 +1,25 @@
 function creareTimeDrivenTriggers() {
-  var date = new Date();
-  var day = date.getDay();
-  var days = [ScriptApp.WeekDay.SUNDAY, ScriptApp.WeekDay.MONDAY, ScriptApp.WeekDay.TUESDAY,
-              ScriptApp.WeekDay.WEDNESDAY, ScriptApp.WeekDay.THURSDAY, ScriptApp.WeekDay.FRIDAY, ScriptApp.WeekDay.SATURDAY];
-  if (day !== 6 || day !== 0) {
-    ScriptApp.newTrigger('emailSend')
-      .timeBased()
-      .onWeekDay(days[day])
-      .atHour(8)
-      .create();
-  }
+  ScriptApp.newTrigger('emailSend')
+    .timeBased
+    .everyDays(1)
+    .atHour(8)
+    .create();
 }
 
 var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('Предписания');
 
 function emailSend() {
+  var today = new Date();
+  var day = today.getDay();
   var dvvGmal = "dvv@nso.ru" + "," + "gmal@nso.ru";
   var recipient = [dvvGmal, "grv@nso.ru", "aako@nso.ru", "shaa@nso.ru", "jds@nso.ru", "sti@nso.ru", "prias@nso.ru"];
-  for (let row = 2; row <= sheet.getLastRow(); row++) {
-    if (dateComparison(row) > 0) {
-      MailApp.sendEmail(recipient[inspectorsName(row)], "Оповещение о сроке исполнения предписания",
-                        "Через " + dateComparison(row) + " дня истекает срок исполнения предписания по объекту: " +
-                        alertTheme(row));
+  if (day !== 6 || day !== 0) {
+    for (let row = 2; row <= sheet.getLastRow(); row++) {
+      if (dateComparison(row) > 0) {
+        MailApp.sendEmail(recipient[inspectorsName(row)], "Оповещение о сроке исполнения предписания",
+                          "Через " + dateComparison(row) + " дня истекает срок исполнения предписания по объекту: " +
+                          alertTheme(row));
+      }
     }
   }
 }

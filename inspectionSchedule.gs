@@ -57,7 +57,6 @@ function searchCell(nameSheet, row) {
 }
 
 function chekingValues(nameSheet) {
-  var months = ['январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'];
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(nameSheet);
   var cell = sheet.getRange('D2').getValue();
   for (let i = 0; i <= months.length; i++) {

@@ -14,8 +14,6 @@ function emailSend() {
   var sheets = ['Дмитриев+Гора', 'Желуницин', 'Колпакова', 'Шпильной', 'Приёмкин'];
   var recipient = [dvvGmal, "grv@nso.ru", "aako@nso.ru", "shaa@nso.ru", "prias@nso.ru"];
   for (let i = 0; i < recipient.length; i++) {
-    Logger.log(chekingValues(sheets[i]));
-    Logger.log(date.getMonth());
     removingUnwantedColumns(sheets[i]);
     for (let row = 3; row <= valueLimit(sheets[i]); row++) {
       switch (chekingValues(sheets[i])) {
